@@ -6,6 +6,10 @@
 
 #include <fstream>
 
+#ifdef WIN32
+#define mkdir(A, B) mkdir(A)
+#endif
+
 std::string ImageCache::cache_path;
 
 ImageCache::ImageCache(const char* tmp_path)
