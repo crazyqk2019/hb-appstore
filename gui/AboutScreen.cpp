@@ -1,4 +1,4 @@
-#include <sstream>
+﻿#include <sstream>
 
 #include "../libs/get/src/Get.hpp"
 #include "../libs/get/src/Utils.hpp"
@@ -19,10 +19,10 @@ CST_Color AboutScreen::gray = { 0x50, 0x50, 0x50, 0xff };
 
 AboutScreen::AboutScreen(Get* get)
 	: get(get)
-	, cancel("Go Back", B_BUTTON, false, 29)
-	, feedback("Leave Feedback", A_BUTTON, false, 17)
-	, title("Homebrew App Store", 35, &black)
-	, subtitle("by fortheusers.org", 25, &black)
+	, cancel("返回", B_BUTTON, false, 29)
+	, feedback("发送反馈", A_BUTTON, false, 17)
+	, title("自制程序市场", 35, &black)
+	, subtitle("由fortheusers.org制作", 25, &black)
 	, ftuLogo(AVATAR_URL "40721862", []{
 	        return new ImageElement(RAMFS "res/4TU.png");
         })

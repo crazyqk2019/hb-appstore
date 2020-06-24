@@ -1,4 +1,4 @@
-#include "AppList.hpp"
+﻿#include "AppList.hpp"
 #include "AboutScreen.hpp"
 #include "Keyboard.hpp"
 #include "main.hpp"
@@ -15,7 +15,7 @@
 #include <switch.h>
 #endif
 
-const char* AppList::sortingDescriptions[TOTAL_SORTS] = { "by most recent", "by download count", "alphabetically", "by size (descending)", "randomly" };
+const char* AppList::sortingDescriptions[TOTAL_SORTS] = { "按最近访问排序", "按下载次数排序", "按字母排序", "按大小排序（降序）", "随机排序" };
 CST_Color AppList::black = { 0, 0, 0, 0xff };
 CST_Color AppList::gray = { 0x50, 0x50, 0x50, 0xff };
 
@@ -23,10 +23,10 @@ AppList::AppList(Get* get, Sidebar* sidebar)
 	: get(get)			// the main get instance that contains repo info and stuff
 	, sidebar(sidebar)	// the sidebar, which will store the currently selected category info
 	, keyboard(this)
-	, quitBtn("Quit", SELECT_BUTTON, false, 15)
-	, creditsBtn("Credits", X_BUTTON, false, 15)
-	, sortBtn("Adjust Sort", Y_BUTTON, false, 15)
-	, keyboardBtn("Toggle Keyboard", Y_BUTTON, false, 15)
+	, quitBtn("退出", SELECT_BUTTON, false, 15)
+	, creditsBtn("开发者名单", X_BUTTON, false, 15)
+	, sortBtn("更改排序", Y_BUTTON, false, 15)
+	, keyboardBtn("切换键盘", Y_BUTTON, false, 15)
 #if defined(MUSIC)
 	, muteBtn(" ", 0, false, 15, 43)
 	, muteIcon(RAMFS "res/mute.png")
@@ -366,7 +366,7 @@ void AppList::update()
 
 		// category text
 		category.position(20, 90);
-		category.setText(std::string("Search: \"") + sidebar->searchQuery + "\"");
+		category.setText(std::string("搜索: \"") + sidebar->searchQuery + "\"");
 		category.update();
 		super::append(&category);
 	}

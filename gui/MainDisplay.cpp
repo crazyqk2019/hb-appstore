@@ -1,4 +1,4 @@
-#if defined(SWITCH)
+﻿#if defined(SWITCH)
 #include <switch.h>
 #define PLATFORM "Switch"
 #elif defined(__WIIU__)
@@ -126,10 +126,10 @@ int MainDisplay::updateLoader(void* clientp, double dltotal, double dlnow, doubl
 
 ErrorScreen::ErrorScreen(std::string troubleshootingText)
 	: icon(RAMFS "res/icon.png")
-	, title("Homebrew App Store", 50 - 25)
-	, errorMessage("Couldn't connect to the Internet!", 40)
-	, troubleshooting((std::string("Troubleshooting:\n") + troubleshootingText).c_str(), 20, NULL, false, 600)
-	, btnQuit("Quit", SELECT_BUTTON, false, 15)
+	, title("自制程序市场", 50 - 25)
+	, errorMessage("无法连接到网络！", 40)
+	, troubleshooting((std::string("故障排除：\n") + troubleshootingText).c_str(), 20, NULL, false, 600)
+	, btnQuit("退出", SELECT_BUTTON, false, 15)
 {
 	icon.position(470, 25);
 	icon.resize(35, 35);

@@ -1,4 +1,4 @@
-#include <fstream>
+﻿#include <fstream>
 #include <sstream>
 
 #if defined(SWITCH)
@@ -24,10 +24,10 @@ AppDetails::AppDetails(Package* package, AppList* appList)
 	, appList(appList)
 	, downloadProgress()
 	, download(getAction(package), A_BUTTON, true, 30 / SCALER)
-	, cancel("Cancel", B_BUTTON, true, 30 / SCALER, download.width)
+	, cancel("取消", B_BUTTON, true, 30 / SCALER, download.width)
 	, details(getPackageDetails(package).c_str(), 20, &white, false, 300)
 	, content(package, appList->useBannerIcons)
-	, downloadStatus("Download Status", 30 / SCALER, &white)
+	, downloadStatus("下载状态", 30 / SCALER, &white)
 {
 	// TODO: show current app status somewhere
 
@@ -55,7 +55,7 @@ AppDetails::AppDetails(Package* package, AppList* appList)
 		download.position(970, 470);
 		cancel.position(970, 630);
 
-		const char* buttonLabel = "Launch";
+		const char* buttonLabel = "启动";
 		bool injectorPresent = false;
 
 		if (isTheme)
@@ -120,16 +120,16 @@ std::string AppDetails::getPackageDetails(Package* package)
 {
 	// lots of details that we know about the package
 	std::stringstream more_details;
-	more_details << "Title: " << package->title << "\n"
+	more_details << "名称: " << package->title << "\n"
 	<< package->short_desc << "\n\n"
-	<< "Author: " << package->author << "\n"
-	<< "Version: " << package->version << "\n"
-	<< "License: " << package->license << "\n\n"
-	<< "Package: " << package->pkg_name << "\n"
-	<< "Downloads: " << package->downloads << "\n"
-	<< "Updated: " << package->updated << "\n\n"
-	<< "Download size: " << package->download_size << " KB\n"
-	<< "Install size: " << package->extracted_size << " KB\n";
+	<< "开发者: " << package->author << "\n"
+	<< "版本: " << package->version << "\n"
+	<< "许可协议: " << package->license << "\n\n"
+	<< "包名称: " << package->pkg_name << "\n"
+	<< "下载次数: " << package->downloads << "\n"
+	<< "更新时间: " << package->updated << "\n\n"
+	<< "下载大小: " << package->download_size << " KB\n"
+	<< "安装大小: " << package->extracted_size << " KB\n";
 	return more_details.str();
 }
 
@@ -138,13 +138,13 @@ const char *AppDetails::getAction(Package* package)
 	switch (package->status)
 	{
 		case GET:
-			return "Download";
+			return "下载";
 		case UPDATE:
-			return "Update";
+			return "更新";
 		case INSTALLED:
-			return "Remove";
+			return "卸载";
 		case LOCAL:
-			return "Reinstall";
+			return "重新安装";
 		default:
 			break;
 	}
@@ -227,7 +227,7 @@ void AppDetails::launch()
 	if (!successLaunch)
 	{
 		printf("Failed to launch.");
-		errorText = new TextElement("Couldn't launch app", 24, &red, false, 300);
+		errorText = new TextElement("无法启动程序", 24, &red, false, 300);
 		errorText->position(970, 430);
 		super::append(errorText);
 		this->canLaunch = false;
@@ -384,7 +384,7 @@ int AppDetails::updatePopupStatus(int status, int num, int num_total)
 		Package* package = popup->package;
 
 		if (status < 0 || status >= 5) return 0;
-		const char* statuses[5] = { "Downloading ", "Installing ", "Removing ", "Reloading Metadata", "Syncing Packages"};
+		const char* statuses[5] = { "正在下载 ", "正在安装 ", "正在卸载 ", "重新载入元数据", "同步安装包"};
 
 		statusText << statuses[status];
 
@@ -443,8 +443,8 @@ int AppDetails::updateCurrentlyDisplayedPopup(void* clientp, double dltotal, dou
 }
 
 AppDetailsContent::AppDetailsContent(Package *package, bool useBannerIcons)
-	: reportIssue("Report Issue", Y_BUTTON)
-	, moreByAuthor("More by Author", X_BUTTON)
+	: reportIssue("报告问题", Y_BUTTON)
+	, moreByAuthor("更多该开发者应用", X_BUTTON)
 	, title(package->title.c_str(), 35, &black)
 	, title2(package->author.c_str(), 27, &gray)
 	, details(package->long_desc.c_str(), 20 / SCALER, &black, false, PANE_WIDTH + 20 / SCALER)

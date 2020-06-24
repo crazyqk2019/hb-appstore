@@ -1,4 +1,4 @@
-#include "../libs/chesto/src/ImageElement.hpp"
+﻿#include "../libs/chesto/src/ImageElement.hpp"
 #include "../libs/chesto/src/ListElement.hpp"
 #include "../libs/chesto/src/TextElement.hpp"
 
@@ -36,7 +36,7 @@ public:
 	const char* cat_names[TOTAL_CATS] = { "Search", "All Apps", "Games", "Emulators", "Tools", "Advanced", "Concepts", "Misc" };
 	const char* cat_value[TOTAL_CATS] = { "_search", "_all", "game", "emu", "tool", "advanced", "concept", "_misc" };
 #else
-	const char* cat_names[TOTAL_CATS] = { "Search", "All Apps", "Games", "Emulators", "Tools", "Advanced", "Themes", "Misc" };
+	const char* cat_names[TOTAL_CATS] = { "搜索", "所有应用", "游戏", "模拟器", "工具", "高级应用", "主题", "杂项" };
 	const char* cat_value[TOTAL_CATS] = { "_search", "_all", "game", "emu", "tool", "advanced", "theme", "_misc" };
 #endif
 

@@ -1,9 +1,9 @@
-#include "AppList.hpp"
+﻿#include "AppList.hpp"
 
 Sidebar::Sidebar()
 	: logo(RAMFS "res/icon.png")
-	, title("Homebrew App Store", 22)
-	, subtitle("GPLv3 License", 18)
+	, title("自制程序市场", 22)
+	, subtitle("GPLv3许可协议", 18)
 {
 	// a sidebar consists of:
 	//		a collection of category labels (TextElements),
@@ -66,7 +66,7 @@ void Sidebar::addHints()
 	hider->position(270, 685);
 	super::append(hider);
 
-	hint = new TextElement("Hide", 15);
+	hint = new TextElement("隐藏", 15);
 	hint->position(hider->x + hider->width + 5, hider->y);
 	super::append(hint);
 

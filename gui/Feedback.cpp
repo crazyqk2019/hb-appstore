@@ -1,4 +1,4 @@
-#include "Feedback.hpp"
+﻿#include "Feedback.hpp"
 #include "ImageCache.hpp"
 #include "MainDisplay.hpp"
 #include "main.hpp"
@@ -12,13 +12,13 @@
 
 Feedback::Feedback(Package* package)
 	: package(package)
-	, title((std::string("Leaving feedback for: \"") + package->title + "\"").c_str(), 25)
+	, title((std::string("发送反馈给：\"") + package->title + "\"").c_str(), 25)
 	, icon(package->getIconUrl().c_str(), []{ return new ImageElement(RAMFS "res/default.png"); })
-	, quit("Discard", Y_BUTTON, true, 24)
-	, send("Submit", X_BUTTON, true, 24)
-	, response("If you need to send more detailed feedback, please email us at fight@fortheusers.org", 20, NULL, false, 360)
+	, quit("取消", Y_BUTTON, true, 24)
+	, send("提交", X_BUTTON, true, 24)
+	, response("如果您想发送更多详细的反馈\n请发送邮件到我们的邮箱 fight@fortheusers.org", 20, NULL, false, 360)
 #if defined(__WIIU__)
-	, hint("(btw you can press Minus to exit!)", 20, NULL)
+	, hint("(顺便提示：您可以按减号键退出！)", 20, NULL)
 #endif
 {
 	title.position(50, 30);
